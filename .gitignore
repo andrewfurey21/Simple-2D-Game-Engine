@@ -1,0 +1,9 @@
+Simple-2D-Game-Engine.vcxproj
+Simple-2D-Game-Engine.vcxproj.filters
+Simple-2D-Game-Engine.vcxproj.user
+
+.vs/
+
+SDL2/
+SDL2_image-2.0.1
+SDL2_ttf-2.0.15
