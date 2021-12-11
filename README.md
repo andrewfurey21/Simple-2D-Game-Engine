@@ -2,7 +2,6 @@
 
 ## TODO
 
-- fix sizing and location of textures and text
 - fullscreen/resizing the screen and fixing resolution
 - gui
 - add simple physics
