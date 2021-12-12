@@ -2,7 +2,6 @@
 
 ## TODO
 
-- fix sizing and location of textures and text
 - fullscreen/resizing the screen and fixing resolution
 - gui
 - add simple physics
@@ -12,3 +11,4 @@
 - add stuff to tool box
 - mouse class with function that changes appearance of mouse
 - get it to work on multiple devices
+* animating with sprite sheets
