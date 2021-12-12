@@ -3,7 +3,7 @@
 ## TODO
 
 - fullscreen/resizing the screen and fixing resolution
-- gui
+- gui / imgui
 - add simple physics
 - improve tile map (alot)
 - fix number generator to use proper c++ instead of old c code
