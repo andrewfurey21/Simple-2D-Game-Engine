@@ -5,4 +5,4 @@
 #include <iostream>
 #include "ToolBox/Color.h"
 
-using Point = SDL_Point;
+using Size = SDL_Point;

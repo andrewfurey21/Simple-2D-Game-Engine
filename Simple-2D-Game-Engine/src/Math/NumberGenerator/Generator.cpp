@@ -1,16 +1,17 @@
 #include "Generator.h"
 
-//Generator::Generator() {
-//	
-//}
 
 //does not include max
 int Generator::InternalInteger(int min, int max) {
-	//use c++ random generator (this is more for c)
-	//someone said its not good for threads. i should look at using threads and concurrency
-	return rand()%(max-min) + min;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> distribution(min, max);
+	return distribution(gen);
 }
 
-float Generator::InternalFloat() {
-	return float(rand()) / RAND_MAX;
+float Generator::InternalFloat(float min, float max) {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<float> distribution(min, max);
+	return distribution(gen);
 }

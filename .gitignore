@@ -9,3 +9,4 @@ SDL2_image-2.0.1
 SDL2_ttf-2.0.15
 
 Simple-2D-Game-Engine/*.dll
+bin/

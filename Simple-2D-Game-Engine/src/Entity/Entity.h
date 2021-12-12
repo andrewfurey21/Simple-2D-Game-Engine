@@ -4,14 +4,16 @@
 
 class Entity {
 public:
-	Entity(SDL_Renderer* renderer, const char* textureFile);
+	Entity(SDL_Renderer* renderer, const char* textureFile, int x, int y, int w, int h);
 
 	void Update();
 	void Render(SDL_Renderer* renderer);
 
 	Float2 position;
 
+
 private:
+	Size size;
 	SDL_Texture* entityTexture;
-	SDL_Rect srcRect, destRect;
+	SDL_Rect source, destination;
 };

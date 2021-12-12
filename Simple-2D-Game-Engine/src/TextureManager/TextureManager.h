@@ -2,8 +2,8 @@
 #include "../Includes.h"
 #include "SDL_image.h"
 
-inline Point queryTextureSize(SDL_Texture* texture) {
-	Point sizeOfTexture;
+inline Size queryTextureSize(SDL_Texture* texture) {
+	Size sizeOfTexture;
 	SDL_QueryTexture(texture, NULL, NULL, &sizeOfTexture.x, &sizeOfTexture.y);
 	return sizeOfTexture;
 }

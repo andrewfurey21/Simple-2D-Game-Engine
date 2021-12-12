@@ -14,19 +14,9 @@ void InputHandler::Release() {
 	sInstance = nullptr;
 }
 
-InputHandler::InputHandler() {
-	
-}
-
-
-InputHandler::~InputHandler() {
-
-}
-
 bool InputHandler::KeyDown(SDL_Scancode scanCode) {
 	return mKeyboardStates[scanCode];
 }
-
 
 void InputHandler::Update() {
 	mKeyboardStates = SDL_GetKeyboardState(NULL);

@@ -1,6 +1,7 @@
 #pragma once
 #include "time.h"
 #include "stdlib.h"
+#include <random>
 
 
 class Generator {
@@ -14,17 +15,17 @@ public:
 		static Generator generator;
 		return generator;
 	}
-	static float Float() {
-		return Get().InternalFloat();
+	static float Float(float min, float max) {
+		return Get().InternalFloat(min, max);
 	};
 	static int Integer(int min, int max) { 
 		return Get().InternalInteger(min, max); 
 	}
-private:
 
-	Generator() { srand((unsigned int)time(0)); };
+private:
+	Generator() {}
 	int InternalInteger(int min, int max);
-	float InternalFloat();
+	float InternalFloat(float min, float max);
 	static Generator s_Generator;
 
 };  

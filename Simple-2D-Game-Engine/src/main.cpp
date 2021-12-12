@@ -1,4 +1,5 @@
 #include "Stage/Stage.h"
+#include <random>
 #undef main
 
 Stage* stage = nullptr;

@@ -32,7 +32,7 @@ Text* TextManager::LoadText(SDL_Renderer *renderer, const char *fontFile, const 
 // add x and y
 void TextManager::DrawText(SDL_Renderer *renderer, Text *text, int x, int y, int w, int h) {
 	SDL_SetRenderDrawColor(renderer, text->color.red, text->color.green, text->color.blue, text->color.alpha);
-	Point size = queryTextureSize(text->textTexture);
+	Size size = queryTextureSize(text->textTexture);
 	const SDL_Rect source = {0, 0, size.x, size.y};
 	const SDL_Rect destination = { x, y, w, h };
 	SDL_RenderCopy(renderer, text->textTexture, &source, &destination);

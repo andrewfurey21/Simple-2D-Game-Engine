@@ -4,12 +4,8 @@
 class InputHandler {
 
 private:
-	InputHandler();
-	~InputHandler();
-
 	static InputHandler* sInstance;
 	const uint8_t* mKeyboardStates;
-
 
 public:
 	static InputHandler* Instance();

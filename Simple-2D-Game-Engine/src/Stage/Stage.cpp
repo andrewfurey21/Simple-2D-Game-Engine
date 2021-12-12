@@ -13,9 +13,9 @@ ToolBox tools;
 SDL_Event Stage::event;
 InputHandler* input;
 
-//Declate objects here
-Text* textToRender;
+//Declare objects here
 
+Entity *player;
 
 Stage::Stage() {
 	std::cout << "Initializing the window..." << std::endl;
@@ -54,11 +54,8 @@ void Stage::init(const char* title, int _width, int _height, bool fullscreen) {
 	}
 	//enables the alpha channel
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	//Define objects here
 
-	// Define objects here
-	Color textColor = Color();
-	textColor.set(255, 0, 0);
-	textToRender = TextManager::LoadText(renderer, "assets/fonts/arial.ttf", "Hello", 20, textColor);
 
 }
 
@@ -77,7 +74,6 @@ void Stage::update() {
 	input->Update();
 	//Update stuff here
 
-
 }
 
 
@@ -87,7 +83,6 @@ void Stage::render() {
 	SDL_GetMouseState(&input->mouseX, &input->mouseY);
 
 	//Render stuff here
-	TextManager::DrawText(renderer, textToRender, 100, 100, 40, 50);
 
 
 	SDL_RenderPresent(renderer);
@@ -97,7 +92,6 @@ void Stage::clean() {
 	input = nullptr;
 
 	//delete stuff here
-	free(textToRender);
 
 }
 
