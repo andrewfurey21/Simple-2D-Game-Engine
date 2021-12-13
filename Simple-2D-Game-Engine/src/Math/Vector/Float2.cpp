@@ -23,7 +23,7 @@ float Float2::magnitude() {
 }
 
 float Float2::dot(Float2 a, Float2 b) {
-	return a.x * b.x + a.y + b.y;
+	return a.x * b.x + a.y * b.y;
 }
 
 void Float2::setMagnitude(float scalar) {
