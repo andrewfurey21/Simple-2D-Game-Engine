@@ -2,10 +2,10 @@
 #include "../Includes.h"
 
 
-class Stage {
+class GameManager {
 public:
-	Stage();
-	~Stage();
+	GameManager();
+	~GameManager();
 
 	void init(const char* title, int width, int height, bool fullscreen);
 	void handleEvents();

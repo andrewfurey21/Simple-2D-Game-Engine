@@ -1,8 +1,8 @@
-#include "Stage/Stage.h"
+#include "GameManager/GameManager.h"
 #include <random>
 #undef main
 
-Stage* stage = nullptr;
+GameManager* manager = nullptr;
 
 int main() {
 	const int FPS = 30;
@@ -11,15 +11,15 @@ int main() {
 	unsigned int frameStart;
 	int frameTime;
 
-	stage = new Stage();
-	stage->init("Simple2D Engine", 800, 640, false);
+	manager = new GameManager();
+	manager->init("Simple2D Engine", 800, 640, false);
 
-	while (stage->running()) {
+	while (manager->running()) {
 		frameStart = SDL_GetTicks();
 
-		stage->handleEvents();
-		stage->update();
-		stage->render();
+		manager->handleEvents();
+		manager->update();
+		manager->render();
 
 		frameTime = SDL_GetTicks() - frameStart;
 		if (FRAME_DELAY > frameTime) {
@@ -27,6 +27,6 @@ int main() {
 		}
 	}
 
-	stage->clean();
+	manager->clean();
 	return 0;
  }

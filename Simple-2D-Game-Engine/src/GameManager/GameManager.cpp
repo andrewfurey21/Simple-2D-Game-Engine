@@ -1,5 +1,5 @@
 
-#include "Stage.h"
+#include "GameManager.h"
 #include "../TextureManager/TextureManager.h"
 #include "../TextManager/TextManager.h"
 #include "../Entity/Entity.h"
@@ -10,18 +10,18 @@
 #include "../Math/NumberGenerator/Generator.h"
 
 ToolBox tools;
-SDL_Event Stage::event;
+SDL_Event GameManager::event;
 InputHandler* input;
 
 //Declare objects here
 
 Entity *player;
 
-Stage::Stage() {
+GameManager::GameManager() {
 	std::cout << "Initializing the window..." << std::endl;
 }
 
-Stage::~Stage() {
+GameManager::~GameManager() {
 	IMG_Quit();
 	TTF_Quit();
 	SDL_DestroyWindow(window);
@@ -29,7 +29,7 @@ Stage::~Stage() {
 	SDL_Quit();
 }
 
-void Stage::init(const char* title, int _width, int _height, bool fullscreen) {
+void GameManager::init(const char* title, int _width, int _height, bool fullscreen) {
 	width = _width;
 	height = _height;
 	input = InputHandler::Instance();
@@ -60,7 +60,7 @@ void Stage::init(const char* title, int _width, int _height, bool fullscreen) {
 }
 
 //Such as close, fullscreen and minimize window buttons etc
-void Stage::handleEvents() {
+void GameManager::handleEvents() {
 	SDL_PollEvent(&event);
 	switch (event.type) {
 	case SDL_QUIT:
@@ -70,14 +70,14 @@ void Stage::handleEvents() {
 		break;
 	}
 }
-void Stage::update() {
+void GameManager::update() {
 	input->Update();
 	//Update stuff here
 
 }
 
 
-void Stage::render() {
+void GameManager::render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	SDL_GetMouseState(&input->mouseX, &input->mouseY);
@@ -87,7 +87,7 @@ void Stage::render() {
 
 	SDL_RenderPresent(renderer);
 }
-void Stage::clean() {
+void GameManager::clean() {
 	input->Release();
 	input = nullptr;
 
@@ -95,6 +95,6 @@ void Stage::clean() {
 
 }
 
-bool Stage::checkForKeyPress(SDL_Scancode scanCode) {
+bool GameManager::checkForKeyPress(SDL_Scancode scanCode) {
 	return input->KeyDown(scanCode);
 }
