@@ -14,6 +14,8 @@ public:
 	void setMagnitude(float scalar);
 	float magnitude();
 
+	static float dot(Float2 a, Float2 b);
+
 	Float2 scale(float scalar) const;
 	Float2 operator*(const float scalar) const;
 
