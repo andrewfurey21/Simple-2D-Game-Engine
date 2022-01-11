@@ -1,6 +1,6 @@
 #pragma once
 #include "../Includes.h"
-#include "SDL_ttf.h"
+
 #include "../TextureManager/TextureManager.h"
 
 struct Text {

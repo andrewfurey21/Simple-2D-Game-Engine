@@ -1,6 +1,6 @@
 #pragma once
 #include "../Includes.h"
-#include "SDL_image.h"
+
 
 inline Size queryTextureSize(SDL_Texture* texture) {
 	Size sizeOfTexture;

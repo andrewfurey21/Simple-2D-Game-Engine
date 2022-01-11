@@ -12,8 +12,5 @@ public:
 	static void Release();
 	bool KeyDown(SDL_Scancode scanCode);
 	void Update();
-
-	int mouseX;
-	int mouseY;
 };
 

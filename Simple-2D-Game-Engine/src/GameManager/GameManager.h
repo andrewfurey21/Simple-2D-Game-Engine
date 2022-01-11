@@ -18,7 +18,7 @@ public:
 	static SDL_Event event;
 
 private:
-	bool isRunning;
+	bool isRunning = false;
 	SDL_Window *window;
 	bool checkForKeyPress(SDL_Scancode scanCode);
 	int width, height;

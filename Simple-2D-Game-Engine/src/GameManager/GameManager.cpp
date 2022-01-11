@@ -4,7 +4,8 @@
 #include "../TextManager/TextManager.h"
 #include "../Entity/Entity.h"
 #include "../Tilemap/Tilemap.h"
-#include "../InputHandler/InputHandler.h"
+#include "../Input/InputHandler.h"
+#include "../Input/Mouse.h"
 #include "../Math/Vector/Float2.h"
 #include "../ToolBox/ToolBox.h"
 #include "../Math/NumberGenerator/Generator.h"
@@ -12,6 +13,7 @@
 ToolBox tools;
 SDL_Event GameManager::event;
 InputHandler* input;
+Mouse* mouse;
 
 //Declare objects here
 
@@ -40,7 +42,7 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 	}
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 		std::cout << "Subsystems initialized" << std::endl;
-		window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _width, _height, flags);
+		window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
 		if (!window) {
 			std::cerr << "Window could not be created" << std::endl;
 		}
@@ -54,7 +56,12 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 	}
 	//enables the alpha channel
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	mouse = new Mouse();
+	mouse->setCursor("assets/images/blueMouse.png");
+
 	//Define objects here
+	//cursor = SDL_CreateColorCursor(cursorImage, 0, 0);
+	//SDL_SetCursor(cursor);
 
 
 }
@@ -80,7 +87,12 @@ void GameManager::update() {
 void GameManager::render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
-	SDL_GetMouseState(&input->mouseX, &input->mouseY);
+
+	//SDL_ShowCursor(SDL_DISABLE);
+	//Size size = queryTextureSize(cursor);
+	//const SDL_Rect source = { 0, 0, size.x, size.y };
+	//const SDL_Rect destination = { mouseX, mouseY, 16, 16 };
+	//TextureManager::Draw(renderer, cursor, source, destination);
 
 	//Render stuff here
 
