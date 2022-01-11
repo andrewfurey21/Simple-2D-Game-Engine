@@ -11,4 +11,6 @@
 - add stuff to tool box
 - mouse class with function that changes appearance of mouse
 - get it to work on multiple devices
-* animating with sprite sheets
+- animating with sprite sheets
+- opensimplex noise 
+- sounds
