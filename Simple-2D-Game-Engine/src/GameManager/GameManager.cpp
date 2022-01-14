@@ -73,6 +73,12 @@ void GameManager::handleEvents() {
 	case SDL_QUIT:
 		isRunning = false;
 		break;
+	case SDL_MOUSEBUTTONDOWN:
+		mouse->down(event.button);
+		break;
+	case SDL_MOUSEBUTTONUP:
+		//FIXME: doesnt do one click at a time, only multiple
+		mouse->up();
 	default:
 		break;
 	}
@@ -88,13 +94,8 @@ void GameManager::render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
-	//SDL_ShowCursor(SDL_DISABLE);
-	//Size size = queryTextureSize(cursor);
-	//const SDL_Rect source = { 0, 0, size.x, size.y };
-	//const SDL_Rect destination = { mouseX, mouseY, 16, 16 };
-	//TextureManager::Draw(renderer, cursor, source, destination);
-
 	//Render stuff here
+	std::cout << mouse->left << mouse->right << mouse->middle << std::endl;
 
 
 	SDL_RenderPresent(renderer);
