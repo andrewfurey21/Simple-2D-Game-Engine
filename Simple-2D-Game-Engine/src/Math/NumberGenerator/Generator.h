@@ -1,6 +1,7 @@
 #pragma once
 #include "time.h"
 #include "stdlib.h"
+#include "../../Includes.h"
 #include <random>
 
 
@@ -22,10 +23,14 @@ public:
 		return Get().InternalInteger(min, max); 
 	}
 
+	static void Noise(int count, float* seed, int octaves, float* output) {
+		return Get().InternalNoise(count, seed, octaves, output);
+	}
+
 private:
 	Generator() {}
 	int InternalInteger(int min, int max);
 	float InternalFloat(float min, float max);
-	static Generator s_Generator;
+	void InternalNoise(int count, float* seed, int octaves, float* output);
 
 };  

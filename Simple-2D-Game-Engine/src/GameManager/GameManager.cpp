@@ -15,9 +15,13 @@ SDL_Event GameManager::event;
 InputHandler* input;
 Mouse* mouse;
 
-//Declare objects here
+//Declare stuff here
 
-Entity *player;
+Entity* player;
+float* seed = nullptr;
+float* output = nullptr;
+int outputs = 200;
+
 
 GameManager::GameManager() {
 	std::cout << "Initializing the window..." << std::endl;
@@ -57,12 +61,15 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 	//enables the alpha channel
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	mouse = new Mouse();
-	mouse->setCursor("assets/images/blueMouse.png");
+	//mouse->setCursor("assets/images/blueMouse.png");
 
 	//Define objects here
-	//cursor = SDL_CreateColorCursor(cursorImage, 0, 0);
-	//SDL_SetCursor(cursor);
-
+	seed = new float[outputs];
+	output = new float[outputs];
+	for (int i = 0; i < outputs; i++) {
+		seed[i] = Generator::Float(0, 1);
+	}
+	Generator::Noise(outputs, seed, 10, output);
 
 }
 
@@ -87,6 +94,8 @@ void GameManager::update() {
 	input->Update();
 	//Update stuff here
 
+
+
 }
 
 
@@ -95,7 +104,11 @@ void GameManager::render() {
 	SDL_RenderClear(renderer);
 
 	//Render stuff here
-	std::cout << mouse->left << mouse->right << mouse->middle << std::endl;
+	for (int i = 0; i < outputs; i++) {
+		tools.setColor(255, 0, 0);
+		tools.rect(renderer, i*width/outputs, output[i]*height, 5, 5);
+		//std::cout << i * width / outputs << " , " << output[i] * height << std::endl;
+	}
 
 
 	SDL_RenderPresent(renderer);
