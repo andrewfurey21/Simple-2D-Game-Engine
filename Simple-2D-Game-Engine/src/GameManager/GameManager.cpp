@@ -1,6 +1,6 @@
 
 #include "GameManager.h"
-#include "../TextureManager/TextureManager.h"
+#include "../Asset-Management/TextureManager.h"
 #include "../TextManager/TextManager.h"
 #include "../Entity/Entity.h"
 #include "../Tilemap/Tilemap.h"
@@ -21,6 +21,8 @@ Entity* player;
 float* seed = nullptr;
 float* output = nullptr;
 int outputs = 200;
+
+Mix_Chunk* blip = nullptr;
 
 
 GameManager::GameManager() {
@@ -56,8 +58,18 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 		}
 		isRunning = true;
 	} else {
+		printf("SDL could not initialize: %s\n", SDL_GetError());
 		isRunning = false;
 	}
+
+	//Initialize SDL_mixer
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		isRunning = false;
+	}
+
+	blip = Mix_LoadWAV("assets/sounds/blip.wav");
+
 	//enables the alpha channel
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	mouse = new Mouse();
@@ -82,6 +94,7 @@ void GameManager::handleEvents() {
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		mouse->down(event.button);
+		Mix_PlayChannel(-1, blip, 0);
 		break;
 	case SDL_MOUSEBUTTONUP:
 		//FIXME: doesnt do one click at a time, only multiple

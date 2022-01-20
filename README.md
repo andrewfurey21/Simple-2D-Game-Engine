@@ -13,3 +13,4 @@
 - animating with sprite sheets
 - opensimplex noise 
 - sounds
+- make inputhandler and toolbox singletons
