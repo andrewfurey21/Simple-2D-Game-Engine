@@ -11,6 +11,5 @@
 - add stuff to tool box
 - get it to work on multiple devices
 - animating with sprite sheets
-- opensimplex noise 
 - sounds
 - make inputhandler and toolbox singletons
