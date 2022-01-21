@@ -9,7 +9,7 @@ public:
 	void Update();
 	void Render(SDL_Renderer* renderer);
 
-	Float2 position;
+	float2 position;
 
 
 private:

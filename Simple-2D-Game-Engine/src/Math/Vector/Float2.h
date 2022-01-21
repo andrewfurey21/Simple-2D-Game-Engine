@@ -1,10 +1,10 @@
 #pragma once
 
-class Float2 {
+class float2 {
 public:
 	float x = 0, y = 0;
-	Float2();
-	Float2(float x, float y) : x(x), y(y) {}
+	float2();
+	float2(float x, float y) : x(x), y(y) {}
 
 	void translate(float x, float y);
 	void rotate(float angle, float translateX = 0, float translateY = 0);
@@ -14,16 +14,16 @@ public:
 	void setMagnitude(float scalar);
 	float magnitude();
 
-	static float dot(Float2 a, Float2 b);
+	static float dot(float2 a, float2 b);
 
-	Float2 scale(float scalar) const;
-	Float2 operator*(const float scalar) const;
+	float2 scale(float scalar) const;
+	float2 operator*(const float scalar) const;
 
-	Float2 add(const Float2& other) const;
-	Float2 operator+(const Float2& other) const;
+	float2 add(const float2& other) const;
+	float2 operator+(const float2& other) const;
 
-	Float2 sub(const Float2& other) const;
-	Float2 operator-(const Float2& other) const;
+	float2 sub(const float2& other) const;
+	float2 operator-(const float2& other) const;
 
-	static Float2 sTranslate(Float2 vector, float x, float y) ;
+	static float2 sTranslate(float2 vector, float x, float y) ;
 };

@@ -23,9 +23,6 @@ float* seed = nullptr;
 float* output = nullptr;
 int outputs = 200;
 
-Mix_Chunk* someSound = nullptr;
-
-
 GameManager::GameManager() {
 	std::cout << "Initializing the window..." << std::endl;
 }
@@ -69,8 +66,6 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 		isRunning = false;
 	}
 
-
-
 	//enables the alpha channel
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 	mouse = new Mouse();
@@ -82,9 +77,7 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 	for (int i = 0; i < outputs; i++) {
 		seed[i] = Generator::Float(0, 1);
 	}
-	Generator::Noise(outputs, seed, 10, output);
-
-	someSound = SoundManager::loadSound("assets/sounds/blip.wav");
+	Generator::Noise(outputs, seed, 20, output);
 
 }
 
@@ -101,7 +94,6 @@ void GameManager::handleEvents() {
 	case SDL_MOUSEBUTTONUP:
 		//FIXME: doesnt do one click at a time, only multiple
 		mouse->up();
-		SoundManager::playSound(someSound);
 
 	default:
 		break;
@@ -109,7 +101,6 @@ void GameManager::handleEvents() {
 }
 void GameManager::update() {
 	input->Update();
-	//Update stuff here
 
 
 
@@ -124,7 +115,6 @@ void GameManager::render() {
 	for (int i = 0; i < outputs; i++) {
 		tools.setColor(255, 0, 0);
 		tools.rect(renderer, i*width/outputs, output[i]*height, 5, 5);
-		//std::cout << i * width / outputs << " , " << output[i] * height << std::endl;
 	}
 
 
@@ -133,8 +123,6 @@ void GameManager::render() {
 void GameManager::clean() {
 	input->Release();
 	input = nullptr;
-
-	//delete stuff here
 
 }
 
