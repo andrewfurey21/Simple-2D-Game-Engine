@@ -1,6 +1,7 @@
 
 #include "GameManager.h"
 #include "../Asset-Management/TextureManager.h"
+#include "../Asset-Management/SoundManager.h"
 #include "../TextManager/TextManager.h"
 #include "../Entity/Entity.h"
 #include "../Tilemap/Tilemap.h"
@@ -22,7 +23,7 @@ float* seed = nullptr;
 float* output = nullptr;
 int outputs = 200;
 
-Mix_Chunk* blip = nullptr;
+Mix_Chunk* someSound = nullptr;
 
 
 GameManager::GameManager() {
@@ -68,7 +69,7 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 		isRunning = false;
 	}
 
-	blip = Mix_LoadWAV("assets/sounds/blip.wav");
+
 
 	//enables the alpha channel
 	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
@@ -83,6 +84,8 @@ void GameManager::init(const char* title, int _width, int _height, bool fullscre
 	}
 	Generator::Noise(outputs, seed, 10, output);
 
+	someSound = SoundManager::loadSound("assets/sounds/blip.wav");
+
 }
 
 //Such as close, fullscreen and minimize window buttons etc
@@ -94,11 +97,12 @@ void GameManager::handleEvents() {
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		mouse->down(event.button);
-		Mix_PlayChannel(-1, blip, 0);
 		break;
 	case SDL_MOUSEBUTTONUP:
 		//FIXME: doesnt do one click at a time, only multiple
 		mouse->up();
+		SoundManager::playSound(someSound);
+
 	default:
 		break;
 	}
