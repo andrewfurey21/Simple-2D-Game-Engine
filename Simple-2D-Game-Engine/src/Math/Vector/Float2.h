@@ -2,28 +2,60 @@
 
 class float2 {
 public:
-	float x = 0, y = 0;
-	float2();
+	float2() : x(0), y(0) {};
 	float2(float x, float y) : x(x), y(y) {}
 
-	void translate(float x, float y);
-	void rotate(float angle, float translateX = 0, float translateY = 0);
+	void rotate(float angle, const float2& translate=float2());
 	
-	void normalize();
 	void set(float x, float y);
+
 	void setMagnitude(float scalar);
-	float magnitude();
+	float magnitude() const;
 
 	static float dot(float2 a, float2 b);
 
-	float2 scale(float scalar) const;
-	float2 operator*(const float scalar) const;
+	void scale(float scalar);
+	void operator*=(float scalar);
+	void operator/=(float scalar);
 
-	float2 add(const float2& other) const;
-	float2 operator+(const float2& other) const;
 
-	float2 sub(const float2& other) const;
-	float2 operator-(const float2& other) const;
+	void add(const float2& other);
+	void operator+=(const float2& other);
 
-	static float2 sTranslate(float2 vector, float x, float y) ;
+	void sub(const float2& other);
+	void operator-=(const float2& other);
+
+
+public:
+	float x = 0, y = 0;
+
 };
+
+inline float2 normalize(const float2& v) {
+	float mag = v.magnitude();
+	return float2(v.x / mag, v.y / mag);
+}
+
+inline std::ostream& operator<<(std::ostream& out, const float2& vector) {
+	return out << vector.x << " " << vector.y << " ";
+}
+
+inline float2 operator+(const float2& u, const float2& v) {
+	return float2(u.x + v.x, u.y + v.y);
+}
+
+inline float2 operator-(const float2& u, const float2& v) {
+	return float2(u.x - v.x, u.y - v.y);
+}
+
+inline float2 operator*(double t, const float2& v) {
+	return float2(t * v.x, t * v.y);
+}
+
+inline float2 operator*(const float2& v, double t) {
+	return t * v;
+}
+
+inline float2 operator/(const float2& v, double t) {
+	return (1 / t) * v;
+}
