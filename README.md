@@ -9,5 +9,4 @@
 - get it to work on multiple devices
 - animating with sprite sheets
 - make inputhandler and toolbox singletons
-- update vector class
 - update perlin noise to have 1 and 2d noise
