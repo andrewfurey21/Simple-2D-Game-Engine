@@ -15,7 +15,7 @@ float float2::magnitude() const {
 	return (float)(sqrt(pow(this->x, 2) + pow(this->y, 2)));
 }
 
-float float2::dot(float2 a, float2 b) {
+float float2::dot(const float2& a, const float2& b) {
 	return a.x * b.x + a.y * b.y;
 }
 

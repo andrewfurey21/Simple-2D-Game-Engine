@@ -12,7 +12,7 @@ public:
 	void setMagnitude(float scalar);
 	float magnitude() const;
 
-	static float dot(float2 a, float2 b);
+	static float dot(const float2& a, const float2& b);
 
 	void scale(float scalar);
 	void operator*=(float scalar);
